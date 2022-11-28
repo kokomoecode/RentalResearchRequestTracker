@@ -4,22 +4,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <title>Rental Research Department Ticket Tracker</title>
+    <title>Rental Research Request Tracker</title>
 </head>
 
 <body>
     <section class="container">
-        <h1>Full Stack Ticket Tracker for Demo</h1>
+        <h1>Rental Research Request Tracker</h1>
         <section class="jumbotron">
-            <h3>Add New Issue:</h3>
+            <h3>Add New Request:</h3>
             <form id="issueInputForm" method="POST" action="/new">
                 <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Issue Subject...">
+                    <label for="subject">Subject Area/Site</label>
+                    <input type="text" class="form-control" id="subject" name="subject" placeholder="List Requested Subject Site/Area...">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" class="form-control" id="description" name="description" placeholder="Issue Description...">
+                    <input type="text" class="form-control form-control-lg" id="description" name="description" placeholder="Enter Descriptive Message From requestor...">
                 </div>
                 <div class="form-group">
                     <label for="severity">Severity</label>
@@ -30,12 +30,14 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="assignedTo">Assigned To</label>
-                    <input type="text" class="form-control" id="assignedTo" name="assignedTo" placeholder="Enter Person Responsible...">
+                    <label for="assignedTo">Request From</label>
+                    <input type="text" class="form-control" id="assignedTo" name="assignedTo" placeholder="Enter Project Manager Name...">
                 </div>
-                <button type="submit" class="btn btn-warning">Add</button>
+                <button type="submit" class="btn btn-info">Add</button>
             </form>
+            <h6>ETA will be emailed you to within a business day</h6>
         </section>
+        
         <section class="row">
             <div class="col-lg-12">
                 <div id="issuesList">
@@ -46,12 +48,13 @@
                         <h3><%=tickets.subject%></h3>
                         <p><%=tickets.description%></p>
                         <p><span class="glyphicon glyphicon-time"></span>   <%=tickets.severity%><span class="glyphicon glyphicon-user"> </span> <%=tickets.assignedTo%></p>
-                        <a href="/edit/<%=tickets._id%>" class="btn btn-warning">Close</a>
+                        <a href="/edit/<%=tickets._id%>" class="btn btn-success">Close</a>
                         <a href="/edit/remove/<%=tickets._id%>" class="btn btn-danger">Delete</a>
                     </div>
                     <% }) %>
 
                 </div>
+                
             </div>
         </section>
     </section>
